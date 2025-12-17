@@ -1,86 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="monetag" content="856575aeb236ec385e7fd5cc03569c0d">
-    <script>(function(s){s.dataset.zone='10337473',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Reward Ads Page</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 40px;
-        text-align: center;
-        background: #f0f0f0;
-      }
-      button {
-        padding: 15px 30px;
-        font-size: 18px;
-        cursor: pointer;
-      }
-      #status {
-        margin-top: 20px;
-        font-weight: bold;
-        color: green;
-      }
-      #adsWatched {
-        margin-top: 10px;
-        font-size: 16px;
-      }
-      <button id="supportBtn">Support this site ❤️</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support This Site</title>
 
-    </style>
-  </head>
-  <body>
-    <h1>Watch Reward Ads to Support</h1>
-    <button id="watchAdBtn">Watch Ad</button>
-    <div id="status"></div>
-    <div id="adsWatched">Ads watched: 0</div>
+  <!-- Monetag Verification (already approved, safe to keep) -->
+  <meta name="monetag-site-verification" content="856575aeb236ec385e7fd5cc03569c0d">
 
-    <script>
-      const watchAdBtn = document.getElementById("watchAdBtn");
-      const status = document.getElementById("status");
-      const adsWatchedDisplay = document.getElementById("adsWatched");
+  <!-- Monetag OnClick Ad Script -->
+  <script>
+    (function(s){
+      s.dataset.zone='10337473';
+      s.src='https://al5sm.com/tag.min.js';
+    })([document.documentElement, document.body]
+      .filter(Boolean)
+      .pop()
+      .appendChild(document.createElement('script')));
+  </script>
 
-      let adsWatched = 0;
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      text-align: center;
+      background: #f0f0f0;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    p {
+      margin-top: 15px;
+      color: #555;
+    }
+  </style>
+</head>
 
-      watchAdBtn.addEventListener("click", () => {
-        status.textContent = "Loading ad...";
-        watchAdBtn.disabled = true;
+<body>
+  <h1>Support This Site ❤️</h1>
 
-        // === REPLACE THIS WITH REAL AD NETWORK CODE ===
-        // Simulate a 2-minute ad for now:
-        setTimeout(() => {
-          adsWatched++;
-          adsWatchedDisplay.textContent = `Ads watched: ${adsWatched}`;
-          status.textContent = "Thanks for watching the ad!";
-          watchAdBtn.disabled = false;
-        }, 120000);
+  <!-- THIS is all you need -->
+  <button>Support by viewing an ad</button>
 
-        /*
-      Example with a real ad network API (pseudo-code):
-
-      AdNetwork.showRewardedAd()
-        .then(() => {
-          adsWatched++;
-          adsWatchedDisplay.textContent = `Ads watched: ${adsWatched}`;
-          status.textContent = 'Thanks for watching the ad!';
-          watchAdBtn.disabled = false;
-        })
-        .catch(() => {
-          status.textContent = 'Ad not completed or failed. Try again.';
-          watchAdBtn.disabled = false;
-        });
-      */
-      });
-    </script>
-  </body>
+  <p>
+    Clicking the button helps keep this site running.
+  </p>
+</body>
 </html>
-
-<!-- redeploy -->
-
-
-
 
 
 
