@@ -3,20 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Support This Site</title>
+  <title>Reward Ads Page</title>
 
-  <!-- Monetag Verification (already approved, safe to keep) -->
-  <meta name="monetag-site-verification" content="856575aeb236ec385e7fd5cc03569c0d">
+  <!-- Monetag verification (keep if you already verified) -->
+  <meta name="monetag-site-verification" content="856575aeb236ec385e7fd5cc03569c0d" />
 
-  <!-- Monetag OnClick Ad Script -->
+  <!-- Monetag OnClick tag -->
   <script>
     (function(s){
-      s.dataset.zone='10337473';
-      s.src='https://al5sm.com/tag.min.js';
-    })([document.documentElement, document.body]
-      .filter(Boolean)
-      .pop()
-      .appendChild(document.createElement('script')));
+      s.dataset.zone = "10337473";
+      s.src = "https://al5sm.com/tag.min.js";
+    })(
+      [document.documentElement, document.body]
+        .filter(Boolean)
+        .pop()
+        .appendChild(document.createElement("script"))
+    );
   </script>
 
   <style>
@@ -31,22 +33,54 @@
       font-size: 18px;
       cursor: pointer;
     }
-    p {
-      margin-top: 15px;
-      color: #555;
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    #note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
     }
   </style>
 </head>
 
 <body>
-  <h1>Support This Site ❤️</h1>
+  <h1>Support This Site</h1>
 
-  <!-- THIS is all you need -->
-  <button>Support by viewing an ad</button>
+  <button id="watchAdBtn">Watch Ad</button>
 
-  <p>
-    Clicking the button helps keep this site running.
-  </p>
+  <div id="status"></div>
+  <div id="note">
+    If nothing opens, turn off adblock / pop-up blocker, then try again.
+  </div>
+
+  <script>
+    const watchAdBtn = document.getElementById("watchAdBtn");
+    const status = document.getElementById("status");
+
+    watchAdBtn.addEventListener("click", () => {
+      status.textContent = "Trying to open an ad...";
+
+      // Monetag OnClick usually triggers on user clicks.
+      // We can't force it, but we can help it by making the click "real":
+      // open a harmless blank tab that Monetag can replace (if allowed).
+      // If popups are blocked, user will see nothing.
+
+      const w = window.open("about:blank", "_blank");
+
+      if (!w) {
+        status.textContent = "Pop-up blocked. Allow pop-ups / disable adblock and try again.";
+        return;
+      }
+
+      status.textContent = "If an ad doesn't appear, close the blank tab and try again.";
+      // We do NOT fake 'ads watched' counts because OnClick doesn't confirm completion.
+    });
+  </script>
 </body>
 </html>
 
