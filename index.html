@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reward Ads Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        text-align: center;
+        background: #f0f0f0;
+      }
+      button {
+        padding: 15px 30px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      #status {
+        margin-top: 20px;
+        font-weight: bold;
+        color: green;
+      }
+      #adsWatched {
+        margin-top: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Watch Reward Ads to Support</h1>
+    <button id="watchAdBtn">Watch Ad</button>
+    <div id="status"></div>
+    <div id="adsWatched">Ads watched: 0</div>
+
+    <script>
+      const watchAdBtn = document.getElementById("watchAdBtn");
+      const status = document.getElementById("status");
+      const adsWatchedDisplay = document.getElementById("adsWatched");
+
+      let adsWatched = 0;
+
+      watchAdBtn.addEventListener("click", () => {
+        status.textContent = "Loading ad...";
+        watchAdBtn.disabled = true;
+
+        // === REPLACE THIS WITH REAL AD NETWORK CODE ===
+        // Simulate a 2-minute ad for now:
+        setTimeout(() => {
+          adsWatched++;
+          adsWatchedDisplay.textContent = `Ads watched: ${adsWatched}`;
+          status.textContent = "Thanks for watching the ad!";
+          watchAdBtn.disabled = false;
+        }, 120000);
+
+        /*
+      Example with a real ad network API (pseudo-code):
+
+      AdNetwork.showRewardedAd()
+        .then(() => {
+          adsWatched++;
+          adsWatchedDisplay.textContent = `Ads watched: ${adsWatched}`;
+          status.textContent = 'Thanks for watching the ad!';
+          watchAdBtn.disabled = false;
+        })
+        .catch(() => {
+          status.textContent = 'Ad not completed or failed. Try again.';
+          watchAdBtn.disabled = false;
+        });
+      */
+      });
+    </script>
+  </body>
+</html>
